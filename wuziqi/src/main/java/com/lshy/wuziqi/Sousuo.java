@@ -31,6 +31,7 @@ public class Sousuo {
                 leval -= 2;
                 System.out.println("超时导致level 降级");
                 cucu = System.currentTimeMillis();
+                qir = qi.copy();
             }
         }
         re.print();
@@ -55,6 +56,7 @@ public class Sousuo {
                 leval--;
                 System.out.println("超时导致level 降级");
                 cucu = System.currentTimeMillis();
+                qir = qi.rever();
             }
         }
         re.print();
@@ -86,6 +88,15 @@ public class Sousuo {
 //        Collection<Zoufa> gen = qi.gen();
 //        pppppps("当前节点位置 " + "层数：" + k + "alf:" + alf + "  beit:" + beit + " 节点数目：" + gen.size());
 ////        tttt("着法生成用时" + (System.currentTimeMillis() - cu));
+//      if (gen.size() == 0) {//无子节点直接进入评估。
+//        if (p == null) {
+//            return null;
+//        }
+//        int pp = qi.pingGu(p);
+//        qi.unluoZi(p);
+//        p.setPingu(pp);
+//        return p;
+//    }
 //        for (Zoufa zoufa : gen) {
 //            zoufa.parent = p;
 //        }
