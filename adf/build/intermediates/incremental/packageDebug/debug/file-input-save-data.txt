@@ -1,7 +1,0 @@
-#Internal package file, do not edit.
-#Sat May 12 19:32:22 CST 2018
-0.baseType=DIRECTORY
-0.base=D\:\\lshy_work\\study\\wuziqi\\adf\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-0.path=classes.dex
-0.set=DEX
-count=1

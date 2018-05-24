@@ -1,4 +1,0 @@
-#Sun May 13 18:57:57 CST 2018
-base.0=D\:\\lshy_work\\study\\wuziqi\\adf\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex
