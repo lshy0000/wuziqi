@@ -5,13 +5,13 @@ import java.util.Collection;
 
 public class Sousuo {
 
-    private static boolean M;
+    private static boolean M=true;
     private static boolean T = true;
     private static long cu;
     private static long cucu;
     private static long cuar[];
     private static long ttc = 20000;
-    private static int levals = 5;
+    private static int levals =7;
     private static int leval;
 
     public static <T extends Zoufa> T fenxi(Qi<T> qi) {
@@ -25,16 +25,17 @@ public class Sousuo {
         boolean b = true;
         while (b) {
             try {
-                re = (T) Zoufa.getRoot(c(qir, null, leval, MAX, MIN));
+                re = (T) (c(qir, null, leval, MAX, MIN));
                 b = false;
             } catch (RuntimeException e) {
                 leval -= 2;
-                System.out.println("超时导致level 降级");
+                System.out.println("超时导致level 降级");//五子棋偶数的估值算法有偏差
                 cucu = System.currentTimeMillis();
                 qir = qi.copy();
             }
         }
         re.print();
+        re = Zoufa.getRoot(re);
         return re;
     }
 
@@ -50,7 +51,7 @@ public class Sousuo {
         boolean b = true;
         while (b) {
             try {
-                re = (T) Zoufa.getRoot(c(qir, null, leval, MAX, MIN));
+                re = (T) (c(qir, null, leval, MAX, MIN));
                 b = false;
             } catch (RuntimeException e) {
                 leval--;
@@ -60,6 +61,7 @@ public class Sousuo {
             }
         }
         re.print();
+        re = Zoufa.getRoot(re);
         return re;
     }
 
@@ -69,14 +71,14 @@ public class Sousuo {
 //    public static Zoufa c(Qi qi, Zoufa p, int k, int alf, int beit) throws RuntimeException {
 //        if (p != null) {
 //            pppppps("尝试落子 " + "alf:" + alf + "  beit:" + beit);
-//            qi.luoZi(p, k % 2 == 0 ? 1 : -1);
+//            qi.luoZi(p, k % 2 == (leval-1)%2 ? 1 : -1);
 //            if (M) p.print();
 //        }
 //        if (k == 0) {
 //            if (p == null) {
 //                return null;
 //            }
-//            int pp = qi.pingGu();
+//            int pp = qi.pingGu(p);
 //            if (M) qi.print();
 //            qi.unluoZi(p);
 //            p.setPingu(pp);
@@ -85,7 +87,7 @@ public class Sousuo {
 //            return p;
 //        }
 //        cu = Long.valueOf(System.currentTimeMillis());
-//        Collection<Zoufa> gen = qi.gen();
+//        Collection<Zoufa> gen = qi.gen(p);
 //        pppppps("当前节点位置 " + "层数：" + k + "alf:" + alf + "  beit:" + beit + " 节点数目：" + gen.size());
 ////        tttt("着法生成用时" + (System.currentTimeMillis() - cu));
 //      if (gen.size() == 0) {//无子节点直接进入评估。
@@ -165,7 +167,7 @@ public class Sousuo {
 
     public static Zoufa c(Qi qi, Zoufa p, int k, int alf, int beit) throws RuntimeException {
         if (p != null) {
-            qi.luoZi(p, k % 2 == 0 ? 1 : -1);
+            qi.luoZi(p, k % 2 == ((leval-1)%2)  ? 1 : -1);
         }
         if (k == 0) {
             if (p == null) {
@@ -176,7 +178,7 @@ public class Sousuo {
             p.setPingu(pp);
             return p;
         }
-        Collection<Zoufa> gen = qi.gen();
+        Collection<Zoufa> gen = qi.gen(p);
         for (Zoufa zoufa : gen) {
             zoufa.parent = p;
         }

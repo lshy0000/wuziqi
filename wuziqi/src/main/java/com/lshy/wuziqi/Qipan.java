@@ -121,7 +121,11 @@ public class Qipan implements Qi<Position> {
 
 
     @Override
-    public Collection<Position> gen() {
+    public Collection<Position> gen(Position p) {
+        //杀局启发，不能在落子。
+        if (p != null && Jieshu(p)) {
+            return Collections.EMPTY_LIST;
+        }
         HashSet<Position> a = new HashSet<>();
         for (int i = 0; i < qipanArr.length; i++) {
             for (int j = 0; j < qipanArr[0].length; j++) {
@@ -160,12 +164,7 @@ public class Qipan implements Qi<Position> {
         if (a.size() == 0) {
             return Arrays.asList(new Position(((int) (Math.random() * 5 + 5)), ((int) (Math.random() * 5 + 5))));
         }
-        //杀局启发，不能在落子。
-        for (Position position : a) {
-            if (Jieshu(position)) {
-                return Collections.EMPTY_LIST;
-            }
-        }
+
         //点分启发
         //计算焦点分数，得到的位置根据焦点分数筛选和排序 着法生成，
         boolean isx = Isxianshou();
@@ -274,6 +273,34 @@ public class Qipan implements Qi<Position> {
 
     }
 
+    public int Jieshu2(Position p) {
+        for (int i = 0; i < getPointLine(p).length; i++) {
+            if (Jieshu2(getPointLine(p)[i]) != 0) {
+                return Jieshu2(getPointLine(p)[i]);
+            }
+        }
+        return 0;
+    }
+
+    public static int Jieshu2(int[] a) {
+        if (a.length > 5) {
+            int p = -5;
+            int k = 0;
+            for (int i = 0; i < a.length; i++) {
+                if (p == -5 && a[i] != 0) {
+                    p = a[i];
+                } else if (a[i] != p) {
+                    k = 0;
+                    p = a[i] != 0 ? a[i] : -5;
+                } else {
+                    k++;
+                    if (k == 4) return p;
+                }
+            }
+        }
+        return 0;
+    }
+
     private void add(Collection a, int x, int y) {
         if (qipanArr.length > x && qipanArr.length > y && x > -1 && y > -1) {
             if (qipanArr[x][y] == 0) {
@@ -305,8 +332,13 @@ public class Qipan implements Qi<Position> {
         allLine[p.y + p.x + qipanArr.length * 4 - 1][Math.min(p.x, qipanArr.length - 1 - p.y)] = qipanArr[p.x][p.y];
     }
 
+    static int SSS = 16000;
+
     @Override
     public int pingGu(Position position) {
+        if (position != null && Jieshu(position))//避免戏弄对手。杀局时，评估当为定分。
+            return Jieshu2(position) == 1 ? (100000 - position.getRootInt()) : (-160000 + position.getRootInt());
+
         int re = 0;
         if (position != null) {
             int[][] po = getPointLine(position);

@@ -6,10 +6,26 @@ package com.lshy.wuziqi;
 public class Zoufa {
     public Zoufa() {
     }
-
+    public int getRootInt() {
+        Zoufa p = this;
+        int k = 0;
+        while (p != null) {
+            k++;
+            p =  p.getParent();
+        }
+        return k;
+    }
     Zoufa parent;
 
-    public static Zoufa getRoot(Zoufa zoufa) {
+    public Zoufa getParent() {
+        return parent;
+    }
+
+    public void setParent(Zoufa parent) {
+        this.parent = parent;
+    }
+
+    public static<T extends Zoufa> T getRoot(T zoufa) {
         if (zoufa == null) {
             return null;
         }
@@ -17,7 +33,7 @@ public class Zoufa {
             return zoufa;
         }
         zoufa.parent.setPingu(zoufa.getPingu());
-        return getRoot(zoufa.parent);
+        return getRoot((T) zoufa.parent);
     }
 
     int pingu;

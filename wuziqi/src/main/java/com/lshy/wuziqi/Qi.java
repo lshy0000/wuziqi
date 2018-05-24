@@ -12,8 +12,9 @@ import java.util.Collection;
 public interface Qi<T extends Zoufa> {
     /**
      * @return
+     * @param p
      */
-    public Collection<T> gen();//着法生成
+    public Collection<T> gen(T p);//着法生成
 
     public void print();
 

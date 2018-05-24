@@ -31,7 +31,14 @@ public class Position extends Zoufa implements Comparable {
 
     @Override
     void print() {
-        System.out.println("当前点：" + this.x + "  " + this.y + " score:" + socre+" pingu"+getPingu());
+        Position p = this;
+        int k = 0;
+        while (p != null) {
+            System.out.println("当前点：+k:" + k + p.x + "  " + p.y + " score:" + p.socre + " pingu" + p.getPingu());
+            k++;
+            p = (Position) p.getParent();
+        }
+
     }
 
     @Override
@@ -40,4 +47,6 @@ public class Position extends Zoufa implements Comparable {
             throw new RuntimeException("非正确比较对象");
         return -this.socre + ((Position) o).socre;
     }
+
+
 }
