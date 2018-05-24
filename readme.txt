@@ -14,5 +14,3 @@ f由实际代价*系数+估值距离*系数+逆序数*系数组成。
 加入逆序数系数，比普通A*算法效率高出4倍。
 
 
-License:
-- [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/)
