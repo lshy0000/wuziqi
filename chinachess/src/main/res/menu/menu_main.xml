@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lshy.a23854.chinachess.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="重新开始"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings2"
+        android:orderInCategory="100"
+        android:title="游戏模式"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings3"
+        android:orderInCategory="100"
+        android:title="AI等级"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings4"
+        android:orderInCategory="100"
+        android:title="退出游戏"
+        app:showAsAction="never" />
+</menu>

@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/adf/adf.iml" filepath="$PROJECT_DIR$/adf/adf.iml" />
-      <module fileurl="file://$PROJECT_DIR$/study-wuziqi.iml" filepath="$PROJECT_DIR$/study-wuziqi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chess-wuziqi.iml" filepath="$PROJECT_DIR$/chess-wuziqi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chinachess/chinachess.iml" filepath="$PROJECT_DIR$/chinachess/chinachess.iml" />
       <module fileurl="file://$PROJECT_DIR$/wuziqi/wuziqi-wuziqi.iml" filepath="$PROJECT_DIR$/wuziqi/wuziqi-wuziqi.iml" />
     </modules>
   </component>

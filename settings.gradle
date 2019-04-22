@@ -1,2 +1,2 @@
-include ':wuziqi'
+include ':wuziqi', ':chinachess'
 include ':adf'

@@ -44,6 +44,8 @@ public class WuziqiPanel extends View {
 
     }
 
+
+
     private void init() {
         mPaint.setColor(0x44ff0000);
         mPaint.setAntiAlias(true);
